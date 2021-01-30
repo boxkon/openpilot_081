@@ -448,11 +448,11 @@ static void ui_draw_standstill(UIState *s) {
 
   if (scene.standStill) {
     nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_BASELINE);
-    nvgFontSize(s->vg, 125);
-    nvgFillColor(s->vg, COLOR_ORANGE_ALPHA(240));
-    ui_print(s, viz_standstill_x, viz_standstill_y, "일시정차!");
-    nvgFontSize(s->vg, 150);
-    nvgFillColor(s->vg, COLOR_WHITE_ALPHA(240));
+    nvgFontSize(s->vg, 100);
+    nvgFillColor(s->vg, COLOR_ORANGE_ALPHA(200));
+    ui_print(s, viz_standstill_x, viz_standstill_y, "AUTOHOLD");
+    nvgFontSize(s->vg, 100);
+    nvgFillColor(s->vg, COLOR_WHITE_ALPHA(200));
     ui_print(s, viz_standstill_x, viz_standstill_y+150, "%01d:%02d", minute, second);
   }
 }
@@ -488,7 +488,7 @@ static void ui_draw_debug(UIState *s)
 
     ui_print(s, ui_viz_rx, ui_viz_ry+400, "AD:%.2f", scene.pathPlan.steerActuatorDelay);
     ui_print(s, ui_viz_rx, ui_viz_ry+450, "SC:%.2f", scene.pathPlan.steerRateCost);
-    ui_print(s, ui_viz_rx, ui_viz_ry+500, "OS:%.2f", abs(scene.output_scale));
+    //ui_print(s, ui_viz_rx, ui_viz_ry+500, "OS:%.2f", abs(scene.output_scale));
     nvgFontSize(s->vg, 40);
     nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
     if (s->lat_control == 0) {
