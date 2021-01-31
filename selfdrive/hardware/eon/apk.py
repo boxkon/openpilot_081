@@ -29,10 +29,10 @@ def install_apk(path):
 def start_offroad():
   set_package_permissions()
   system("am start -n ai.comma.plus.offroad/.MainActivity")
-  pm_grant("com.gmd.hidesoftkeys", "android.permission.ACCESS_FINE_LOCATION")
-  system("am startservice com.gmd.hidesoftkeys/.MainService")
   pm_grant("com.neokii.openpilot", "android.permission.ACCESS_FINE_LOCATION")
   system("am startservice com.neokii.openpilot/.MainService")
+  # pm_grant("com.gmd.hidesoftkeys", "android.permission.ACCESS_FINE_LOCATION")
+  # system("am startservice com.gmd.hidesoftkeys/.MainService")
 
 def set_package_permissions():
   try:
