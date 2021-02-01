@@ -395,7 +395,7 @@ static void ui_draw_tpms(UIState *s) {
 
   // Draw Border
   NVGcolor color = COLOR_WHITE_ALPHA(100);
-  ui_draw_rect(s->vg, viz_tpms_x, viz_tpms_y, viz_tpms_w, viz_tpms_h, color, 20, 5);
+  ui_draw_rect(s->vg, viz_tpms_x, viz_tpms_y, viz_tpms_w, viz_tpms_h, color, 10, 20);
 
   nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_BASELINE);
   const int pos_x = viz_tpms_x + (viz_tpms_w / 2);
@@ -451,8 +451,8 @@ static void ui_draw_standstill(UIState *s) {
     nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_BASELINE);
     nvgFontSize(s->vg, 125);
     nvgFillColor(s->vg, COLOR_ORANGE_ALPHA(240));
-    ui_print(s, viz_standstill_x, viz_standstill_y, "일시정차!");
-    nvgFontSize(s->vg, 150);
+    ui_print(s, viz_standstill_x, viz_standstill_y, "AUTOHOLD");
+    nvgFontSize(s->vg, 100);
     nvgFillColor(s->vg, COLOR_WHITE_ALPHA(240));
     ui_print(s, viz_standstill_x, viz_standstill_y+150, "%01d:%02d", minute, second);
   }
@@ -615,7 +615,7 @@ static void ui_draw_vision_speedlimit(UIState *s) {
   if (s->enable_osm == 1) {
     s->is_ego_over_limit = is_speedlim_valid && s->scene.controls_state.getVEgo() > (speedlimit + (speedlimit*0.01*s->speed_lim_off) + hysteresis_offset);
   } else {
-    s->is_ego_over_limit = is_speedlim_valid && ((s->limit_set_speed_camera+round(s->limit_set_speed_camera*0.01*s->speed_lim_off)) < s->scene.vSetDis);
+    s->is_ego_over_limit = is_speedlim_valid && s->limit_set_speed_camera > 29 && ((s->limit_set_speed_camera+round(s->limit_set_speed_camera*0.01*s->speed_lim_off)) < s->scene.vSetDis);
   }
 
   int viz_speedlim_w = 180;
