@@ -9,7 +9,7 @@ bool hyundai_community_non_scc_car = false;
 bool aeb_cmd_act = false;
 int prev_desired_accel = 0;
 int decel_not_ramping = 0;
-bool hyundai_community_mdps_harness_present = true;
+bool hyundai_community_mdps_harness_present = false;
 
 const CanMsg HYUNDAI_COMMUNITY_TX_MSGS[] = {
   {832, 0, 8}, {832, 1, 8},    // LKAS11 Bus 0, 1
@@ -24,12 +24,12 @@ const CanMsg HYUNDAI_COMMUNITY_NONSCC_TX_MSGS[] = {
   {1157, 0, 4}, // LFAHDA_MFC Bus 0
   {1056, 0, 8}, //   SCC11,  Bus 0
   {1057, 0, 8}, //   SCC12,  Bus 0
-  {1290, 0, 8}, //   SCC13,  Bus 0
-  {905, 0, 8},  //   SCC14,  Bus 0
-  {1186, 0, 8}, //  4a2SCC,  Bus 0
-  {1155, 0, 8}, //   FCA12,  Bus 0
-  {909, 0, 8},  //   FCA11,  Bus 0
-  {2000, 0, 8},  // SCC_DIAG, Bus 0
+  //{1290, 0, 8}, //   SCC13,  Bus 0
+  //{905, 0, 8},  //   SCC14,  Bus 0
+  //{1186, 0, 8}, //  4a2SCC,  Bus 0
+  //{1155, 0, 8}, //   FCA12,  Bus 0
+  //{909, 0, 8},  //   FCA11,  Bus 0
+  //{2000, 0, 8},  // SCC_DIAG, Bus 0
   {1427, 0, 6},   // TPMS, Bus 0
  };
 
