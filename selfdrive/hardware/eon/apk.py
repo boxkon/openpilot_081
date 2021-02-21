@@ -106,3 +106,4 @@ def pm_apply_packages(cmd):
 
 if __name__ == "__main__":
   update_apks()
+

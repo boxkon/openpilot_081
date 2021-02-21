@@ -149,9 +149,9 @@ static void draw_lead(UIState *s, const cereal::RadarState::LeadData::Reader &le
   }
 
   if (scene->radarDistance < 149) {
-    draw_chevron(s, d_rel, lead.getYRel(), 25, nvgRGBA(201, 34, 49, fillAlpha), COLOR_YELLOW);  //차량 레이더가 앞차를 인식한 상태
+    draw_chevron(s, d_rel, lead.getYRel(), 25, nvgRGBA(189, 4, 231, fillAlpha), COLOR_GREEN);  //차량 레이더가 앞차를 인식한 상태
   } else {
-    draw_chevron(s, d_rel, lead.getYRel(), 25, nvgRGBA(165, 255, 135, fillAlpha), COLOR_GREEN);  //차량 레이더가 앞차를 인식하지 못한 상태
+    draw_chevron(s, d_rel, lead.getYRel(), 25, nvgRGBA(217, 2, 2, fillAlpha), COLOR_YELLOW);  //차량 레이더가 앞차를 인식하지 못한 상태
   }
 }
 
@@ -400,7 +400,7 @@ static void ui_draw_tpms(UIState *s) {
   nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_BASELINE);
   const int pos_x = viz_tpms_x + (viz_tpms_w / 2);
   const int pos_y = viz_tpms_y + 45;
-  ui_draw_text(s->vg, pos_x, pos_y, "TPMS(psi)", 45, COLOR_WHITE_ALPHA(180), s->font_sans_regular);
+  ui_draw_text(s->vg, pos_x, pos_y, "TPMS(psi)", 60, COLOR_WHITE_ALPHA(180), s->font_sans_regular);
   snprintf(tpmsFl, sizeof(tpmsFl), "%.1f", s->scene.tpmsPressureFl);
   snprintf(tpmsFr, sizeof(tpmsFr), "%.1f", s->scene.tpmsPressureFr);
   snprintf(tpmsRl, sizeof(tpmsRl), "%.1f", s->scene.tpmsPressureRl);
@@ -451,8 +451,8 @@ static void ui_draw_standstill(UIState *s) {
     nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_BASELINE);
     nvgFontSize(s->vg, 125);
     nvgFillColor(s->vg, COLOR_ORANGE_ALPHA(240));
-    ui_print(s, viz_standstill_x, viz_standstill_y, "일시정차!");
-    nvgFontSize(s->vg, 150);
+    ui_print(s, viz_standstill_x, viz_standstill_y, "일시정차");
+    nvgFontSize(s->vg, 120);
     nvgFillColor(s->vg, COLOR_WHITE_ALPHA(240));
     ui_print(s, viz_standstill_x, viz_standstill_y+150, "%01d:%02d", minute, second);
   }
@@ -710,20 +710,20 @@ static void ui_draw_vision_speed(UIState *s) {
   // turning blinker from kegman
   if(scene->leftBlinker) {
     nvgBeginPath(s->vg);
-    nvgMoveTo(s->vg, viz_speed_x, viz_rect.y + header_h/4);
-    nvgLineTo(s->vg, viz_speed_x - viz_speed_w/2, viz_rect.y + header_h/4 + header_h/4);
-    nvgLineTo(s->vg, viz_speed_x, viz_rect.y + header_h/2 + header_h/4);
+    nvgMoveTo(s->vg, viz_speed_x, viz_rect.y + header_h/4 - 30);
+    nvgLineTo(s->vg, viz_speed_x - viz_speed_w/2, viz_rect.y + header_h/4 + header_h/4 - 30);
+    nvgLineTo(s->vg, viz_speed_x, viz_rect.y + header_h/2 + header_h/4 - 30);
     nvgClosePath(s->vg);
-    nvgFillColor(s->vg, nvgRGBA(23,134,68,scene->blinker_blinkingrate>=50?210:60));
+    nvgFillColor(s->vg, nvgRGBA(102,255,102,scene->blinker_blinkingrate>=50?210:60));
     nvgFill(s->vg);
   }
   if(scene->rightBlinker) {
     nvgBeginPath(s->vg);
-    nvgMoveTo(s->vg, viz_speed_x+viz_speed_w, viz_rect.y + header_h/4);
-    nvgLineTo(s->vg, viz_speed_x+viz_speed_w + viz_speed_w/2, viz_rect.y + header_h/4 + header_h/4);
-    nvgLineTo(s->vg, viz_speed_x+viz_speed_w, viz_rect.y + header_h/2 + header_h/4);
+    nvgMoveTo(s->vg, viz_speed_x+viz_speed_w, viz_rect.y + header_h/4 - 30);
+    nvgLineTo(s->vg, viz_speed_x+viz_speed_w + viz_speed_w/2, viz_rect.y + header_h/4 + header_h/4 - 30);
+    nvgLineTo(s->vg, viz_speed_x+viz_speed_w, viz_rect.y + header_h/2 + header_h/4 - 30);
     nvgClosePath(s->vg);
-    nvgFillColor(s->vg, nvgRGBA(23,134,68,scene->blinker_blinkingrate>=50?210:60));
+    nvgFillColor(s->vg, nvgRGBA(102,255,102,scene->blinker_blinkingrate>=50?210:60));
     nvgFill(s->vg);
     }
   if(scene->leftBlinker || scene->rightBlinker) {
