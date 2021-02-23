@@ -400,7 +400,7 @@ static void ui_draw_tpms(UIState *s) {
   nvgTextAlign(s->vg, NVG_ALIGN_CENTER | NVG_ALIGN_BASELINE);
   const int pos_x = viz_tpms_x + (viz_tpms_w / 2);
   const int pos_y = viz_tpms_y + 45;
-  ui_draw_text(s->vg, pos_x, pos_y, "TPMS(psi)", 60, COLOR_WHITE_ALPHA(180), s->font_sans_regular);
+  ui_draw_text(s->vg, pos_x, pos_y, "TPMS(psi)", 55, COLOR_WHITE_ALPHA(180), s->font_sans_regular);
   snprintf(tpmsFl, sizeof(tpmsFl), "%.1f", s->scene.tpmsPressureFl);
   snprintf(tpmsFr, sizeof(tpmsFr), "%.1f", s->scene.tpmsPressureFr);
   snprintf(tpmsRl, sizeof(tpmsRl), "%.1f", s->scene.tpmsPressureRl);
@@ -452,7 +452,7 @@ static void ui_draw_standstill(UIState *s) {
     nvgFontSize(s->vg, 125);
     nvgFillColor(s->vg, COLOR_ORANGE_ALPHA(240));
     ui_print(s, viz_standstill_x, viz_standstill_y, "일시정차");
-    nvgFontSize(s->vg, 120);
+    nvgFontSize(s->vg, 140);
     nvgFillColor(s->vg, COLOR_WHITE_ALPHA(240));
     ui_print(s, viz_standstill_x, viz_standstill_y+150, "%01d:%02d", minute, second);
   }
